@@ -27,14 +27,14 @@ module up_down_counter(
     input up_down_sw,
     //input load,
    // input [3:0] data,
-    output reg [3:0] count
+    output reg [3:0] count = 0
     );
     // this design is for simulation ONLY, as such no clock divider is necessary. 
 
-always@(posedge clk) 
+always@(posedge clk)
 begin
     if (reset)         //set cuounter to 0
-    count <= 0;   
+    count <= 4'b0000;   
     else if(up_down_sw)      // upward counting
         count <= count + 1;
     else                     //downward counting 
