@@ -15,20 +15,22 @@ module counter_tb;
     
     //clock stimulus (start clock at active low, turn on and repeat alteration every 2 time-unit)
    always 
-    #5 clk <= ~clk; // flip clock every 5ps 
+    #10 clk <= ~clk; // flip clock every 5ps 
     
    initial 
    begin
       
         clk <= 1'b0; 
         reset <= 1'b0;
+        up_down_sw <= 1'b0;
+  
         
     //input stimuli 
-        #10  reset <= 1'b1;   // assert reset for 5 time-unit (TU),
-        #100 reset <= 1'b0;   // then deactivate reset to low for 50 TUs
+        #5  reset <= 1'b1;   // assert reset for 5 time-unit (TU),
+        #200 reset <= 1'b0;   // then deactivate reset to low for 50 TUs
       
         #100 up_down_sw <= 1'b1;    //stimutate count up for 20TUs then count down
-        #100 up_down_sw <= 1'b0; 
+        #70 up_down_sw <= 1'b0; 
     end
 endmodule
     
